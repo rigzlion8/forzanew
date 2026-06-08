@@ -1,25 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
 
+const MIN_TRANSITION_MS = 1500;
+
 export function PageLoader() {
-  const [showSplash, setShowSplash] = useState(false);
-  const [splashFading, setSplashFading] = useState(false);
   const [splashVisible, setSplashVisible] = useState(false);
+  const [splashFading, setSplashFading] = useState(false);
+  const [showSplash, setShowSplash] = useState(false);
+
   const [transitionVisible, setTransitionVisible] = useState(false);
   const [transitionFading, setTransitionFading] = useState(false);
 
   const isLoading = useRouterState({ select: (s) => s.isLoading });
   const [wasLoading, setWasLoading] = useState(false);
+  const transitionStartRef = useRef<number>(0);
 
-  // Show splash on every page load / refresh
+  // Initial splash on page load / refresh
   useEffect(() => {
     setShowSplash(true);
     setSplashVisible(true);
 
-    const fadeTimer = setTimeout(() => {
-      setSplashFading(true);
-    }, 4200);
-
+    const fadeTimer = setTimeout(() => setSplashFading(true), 4200);
     const hideTimer = setTimeout(() => {
       setSplashVisible(false);
       setShowSplash(false);
@@ -31,22 +32,31 @@ export function PageLoader() {
     };
   }, []);
 
-  // Page transition loading
+  // Page transition splash
   useEffect(() => {
-    if (!showSplash) {
-      if (isLoading && !wasLoading) {
-        setTransitionVisible(true);
-        setTransitionFading(false);
-      }
-      if (!isLoading && wasLoading) {
+    if (showSplash) return;
+
+    if (isLoading && !wasLoading) {
+      transitionStartRef.current = Date.now();
+      setTransitionVisible(true);
+      setTransitionFading(false);
+    }
+
+    if (!isLoading && wasLoading) {
+      const elapsed = Date.now() - transitionStartRef.current;
+      const remaining = Math.max(0, MIN_TRANSITION_MS - elapsed);
+
+      const t = setTimeout(() => {
         setTransitionFading(true);
-        const timer = setTimeout(() => {
+        setTimeout(() => {
           setTransitionVisible(false);
           setTransitionFading(false);
-        }, 400);
-        return () => clearTimeout(timer);
-      }
+        }, 600);
+      }, remaining);
+
+      return () => clearTimeout(t);
     }
+
     setWasLoading(isLoading);
   }, [isLoading, wasLoading, showSplash]);
 

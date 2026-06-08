@@ -7,6 +7,7 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import { ThreeDHero } from "@/components/three-d-hero";
 import aboutCard from "@/assets/about-card.jpg";
 import servicesCard from "@/assets/services-card.jpg";
@@ -35,6 +36,14 @@ const clients = [
   { name: "Telkom", url: "https://www.telkom.co.ke", bg: "bg-blue-900" },
   { name: "Quickmart", url: "https://quickmart.co.ke", bg: "bg-lime-900" },
 ];
+
+function chunkArray<T>(arr: T[], size: number): T[][] {
+  const chunks: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) {
+    chunks.push(arr.slice(i, i + size));
+  }
+  return chunks;
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -247,28 +256,37 @@ function Index() {
             We are proud to serve leading organizations across Kenya.
           </p>
         </div>
-        <Carousel opts={{ align: "start", loop: true }} className="max-w-5xl mx-auto">
+        <Carousel
+          opts={{ align: "start", loop: true }}
+          plugins={[Autoplay({ delay: 3000, stopOnInteraction: false })]}
+          className="max-w-5xl mx-auto"
+        >
           <CarouselContent className="-ml-4">
-            {clients.map((c) => (
-              <CarouselItem key={c.name} className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
-                <a
-                  href={c.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`group flex flex-col items-center gap-3 border border-border p-6 hover:border-gold transition-colors`}
-                >
-                  <div
-                    className={`h-16 w-16 ${c.bg} flex items-center justify-center group-hover:ring-2 group-hover:ring-gold transition-all`}
-                  >
-                    <span className="text-white font-display font-bold text-xl">
-                      {c.name.charAt(0)}
-                    </span>
-                  </div>
-                  <span className="text-sm text-center text-ink/70 font-medium group-hover:text-gold transition-colors">
-                    {c.name}
-                  </span>
-                  <ExternalLink className="h-3 w-3 text-muted-foreground group-hover:text-gold transition-colors" />
-                </a>
+            {chunkArray(clients, 12).map((chunk, i) => (
+              <CarouselItem key={i} className="pl-4 basis-full">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {chunk.map((c) => (
+                    <a
+                      key={c.name}
+                      href={c.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex flex-col items-center gap-3 border border-border p-4 hover:border-gold transition-colors"
+                    >
+                      <div
+                        className={`h-14 w-14 ${c.bg} flex items-center justify-center group-hover:ring-2 group-hover:ring-gold transition-all`}
+                      >
+                        <span className="text-white font-display font-bold text-lg">
+                          {c.name.charAt(0)}
+                        </span>
+                      </div>
+                      <span className="text-xs text-center text-ink/70 font-medium group-hover:text-gold transition-colors leading-tight">
+                        {c.name}
+                      </span>
+                      <ExternalLink className="h-3 w-3 text-muted-foreground group-hover:text-gold transition-colors" />
+                    </a>
+                  ))}
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
