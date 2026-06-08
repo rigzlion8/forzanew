@@ -17,6 +17,7 @@ import {
   Phone,
   Menu,
   ChevronDown,
+  X,
 } from "lucide-react";
 
 import appCss from "../styles.css?url";
@@ -140,6 +141,14 @@ const NAV: NavItem[] = [
 
 function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+
+  const closeMobile = () => {
+    setMobileOpen(false);
+    setMobileExpanded(null);
+    setOpenDropdown(null);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border">
@@ -229,10 +238,71 @@ function Header() {
         <Link to="/contacts" className="btn-gold hidden md:inline-flex">
           Get a Quote
         </Link>
-        <button aria-label="menu" className="lg:hidden text-ink">
-          <Menu />
+        <button
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          className="lg:hidden text-ink p-1"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {mobileOpen && (
+        <div className="lg:hidden fixed inset-0 top-[73px] z-40 bg-ink/95 backdrop-blur-sm overflow-y-auto">
+          <nav className="flex flex-col px-6 py-6 gap-1">
+            {NAV.map((n) =>
+              n.children ? (
+                <div key={n.label}>
+                  <button
+                    className="w-full flex items-center justify-between py-3 text-white/90 text-sm font-semibold uppercase tracking-wider border-b border-white/10"
+                    onClick={() => setMobileExpanded(mobileExpanded === n.label ? null : n.label)}
+                  >
+                    {n.label}
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform ${mobileExpanded === n.label ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  {mobileExpanded === n.label && (
+                    <div className="ml-4 py-2 space-y-1">
+                      {n.children.map((c) => (
+                        <Link
+                          key={c.to}
+                          to={c.to}
+                          className="block py-2.5 text-white/70 text-sm hover:text-gold transition-colors"
+                          onClick={closeMobile}
+                        >
+                          {c.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  className="py-3 text-white/90 text-sm font-semibold uppercase tracking-wider border-b border-white/10 hover:text-gold transition-colors"
+                  activeProps={{ className: "text-gold" }}
+                  activeOptions={{ exact: n.to === "/" }}
+                  onClick={closeMobile}
+                >
+                  {n.label}
+                </Link>
+              ),
+            )}
+            <div className="mt-6 pt-4 border-t border-white/10">
+              <Link
+                to="/contacts"
+                className="btn-gold w-full text-center block"
+                onClick={closeMobile}
+              >
+                Get a Quote
+              </Link>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
