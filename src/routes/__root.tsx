@@ -7,8 +7,17 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
-import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, Menu } from "lucide-react";
+import { useEffect, type ReactNode, useState } from "react";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter,
+  Mail,
+  Phone,
+  Menu,
+  ChevronDown,
+} from "lucide-react";
 
 import appCss from "../styles.css?url";
 import faviconSvg from "../../public/favicon.svg?url";
@@ -94,18 +103,44 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-const NAV = [
+type NavItem =
+  | { to: string; label: string; children?: never }
+  | {
+      label: string;
+      to?: never;
+      children: { to: string; label: string }[];
+    };
+
+const NAV: NavItem[] = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About Us" },
-  { to: "/services", label: "Services" },
+  {
+    label: "Services",
+    children: [
+      { to: "/services", label: "Overview" },
+      { to: "/services/guarding", label: "Manned Guarding" },
+      { to: "/services/alarm-response", label: "Alarm Response" },
+      { to: "/services/cctv", label: "CCTV Installation" },
+      { to: "/services/tracking", label: "Fleet Tracking" },
+      { to: "/services/cash-management", label: "Cash in Transit" },
+      { to: "/services/technical", label: "Technical Services" },
+      { to: "/services/courier", label: "Courier Services" },
+      { to: "/services/k9", label: "K9 Security Dogs" },
+      { to: "/services/special", label: "Special Services" },
+      { to: "/services/home-security", label: "Home Security" },
+      { to: "/services/workshop", label: "Workshop" },
+    ],
+  },
   { to: "/clients", label: "Our Clients" },
   { to: "/csr", label: "CSR" },
   { to: "/contacts", label: "Contacts" },
   { to: "/careers", label: "Careers" },
   { to: "/news", label: "News" },
-] as const;
+];
 
 function Header() {
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="bg-ink text-white/70 text-xs">
@@ -151,17 +186,45 @@ function Header() {
           </div>
         </Link>
         <nav className="hidden lg:flex items-center gap-7">
-          {NAV.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              className="text-sm font-medium text-ink hover:text-gold transition-colors uppercase tracking-wide"
-              activeProps={{ className: "text-gold" }}
-              activeOptions={{ exact: n.to === "/" }}
-            >
-              {n.label}
-            </Link>
-          ))}
+          {NAV.map((n) =>
+            n.children ? (
+              <div
+                key={n.label}
+                className="relative"
+                onMouseEnter={() => setOpenDropdown(n.label)}
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <button className="text-sm font-medium text-ink hover:text-gold transition-colors uppercase tracking-wide flex items-center gap-1">
+                  {n.label}
+                  <ChevronDown className="h-3 w-3" />
+                </button>
+                {openDropdown === n.label && (
+                  <div className="absolute top-full left-0 mt-1 bg-background border border-border shadow-lg min-w-[200px] py-2">
+                    {n.children.map((c) => (
+                      <Link
+                        key={c.to}
+                        to={c.to}
+                        className="block px-4 py-2 text-sm text-ink hover:bg-secondary hover:text-gold transition-colors"
+                        onClick={() => setOpenDropdown(null)}
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={n.to}
+                to={n.to}
+                className="text-sm font-medium text-ink hover:text-gold transition-colors uppercase tracking-wide"
+                activeProps={{ className: "text-gold" }}
+                activeOptions={{ exact: n.to === "/" }}
+              >
+                {n.label}
+              </Link>
+            ),
+          )}
         </nav>
         <Link to="/contacts" className="btn-gold hidden md:inline-flex">
           Get a Quote

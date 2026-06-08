@@ -17,6 +17,18 @@ import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesWorkshopRouteImport } from './routes/services.workshop'
+import { Route as ServicesTrackingRouteImport } from './routes/services.tracking'
+import { Route as ServicesTechnicalRouteImport } from './routes/services.technical'
+import { Route as ServicesSpecialRouteImport } from './routes/services.special'
+import { Route as ServicesK9RouteImport } from './routes/services.k9'
+import { Route as ServicesHomeSecurityRouteImport } from './routes/services.home-security'
+import { Route as ServicesGuardingRouteImport } from './routes/services.guarding'
+import { Route as ServicesCourierRouteImport } from './routes/services.courier'
+import { Route as ServicesCctvRouteImport } from './routes/services.cctv'
+import { Route as ServicesCashManagementRouteImport } from './routes/services.cash-management'
+import { Route as ServicesAlarmResponseRouteImport } from './routes/services.alarm-response'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -58,6 +70,66 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesWorkshopRoute = ServicesWorkshopRouteImport.update({
+  id: '/workshop',
+  path: '/workshop',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesTrackingRoute = ServicesTrackingRouteImport.update({
+  id: '/tracking',
+  path: '/tracking',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesTechnicalRoute = ServicesTechnicalRouteImport.update({
+  id: '/technical',
+  path: '/technical',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesSpecialRoute = ServicesSpecialRouteImport.update({
+  id: '/special',
+  path: '/special',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesK9Route = ServicesK9RouteImport.update({
+  id: '/k9',
+  path: '/k9',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesHomeSecurityRoute = ServicesHomeSecurityRouteImport.update({
+  id: '/home-security',
+  path: '/home-security',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesGuardingRoute = ServicesGuardingRouteImport.update({
+  id: '/guarding',
+  path: '/guarding',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesCourierRoute = ServicesCourierRouteImport.update({
+  id: '/courier',
+  path: '/courier',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesCctvRoute = ServicesCctvRouteImport.update({
+  id: '/cctv',
+  path: '/cctv',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesCashManagementRoute = ServicesCashManagementRouteImport.update({
+  id: '/cash-management',
+  path: '/cash-management',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesAlarmResponseRoute = ServicesAlarmResponseRouteImport.update({
+  id: '/alarm-response',
+  path: '/alarm-response',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -67,7 +139,19 @@ export interface FileRoutesByFullPath {
   '/contacts': typeof ContactsRoute
   '/csr': typeof CsrRoute
   '/news': typeof NewsRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/alarm-response': typeof ServicesAlarmResponseRoute
+  '/services/cash-management': typeof ServicesCashManagementRoute
+  '/services/cctv': typeof ServicesCctvRoute
+  '/services/courier': typeof ServicesCourierRoute
+  '/services/guarding': typeof ServicesGuardingRoute
+  '/services/home-security': typeof ServicesHomeSecurityRoute
+  '/services/k9': typeof ServicesK9Route
+  '/services/special': typeof ServicesSpecialRoute
+  '/services/technical': typeof ServicesTechnicalRoute
+  '/services/tracking': typeof ServicesTrackingRoute
+  '/services/workshop': typeof ServicesWorkshopRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -77,7 +161,18 @@ export interface FileRoutesByTo {
   '/contacts': typeof ContactsRoute
   '/csr': typeof CsrRoute
   '/news': typeof NewsRoute
-  '/services': typeof ServicesRoute
+  '/services/alarm-response': typeof ServicesAlarmResponseRoute
+  '/services/cash-management': typeof ServicesCashManagementRoute
+  '/services/cctv': typeof ServicesCctvRoute
+  '/services/courier': typeof ServicesCourierRoute
+  '/services/guarding': typeof ServicesGuardingRoute
+  '/services/home-security': typeof ServicesHomeSecurityRoute
+  '/services/k9': typeof ServicesK9Route
+  '/services/special': typeof ServicesSpecialRoute
+  '/services/technical': typeof ServicesTechnicalRoute
+  '/services/tracking': typeof ServicesTrackingRoute
+  '/services/workshop': typeof ServicesWorkshopRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -88,7 +183,19 @@ export interface FileRoutesById {
   '/contacts': typeof ContactsRoute
   '/csr': typeof CsrRoute
   '/news': typeof NewsRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/services/alarm-response': typeof ServicesAlarmResponseRoute
+  '/services/cash-management': typeof ServicesCashManagementRoute
+  '/services/cctv': typeof ServicesCctvRoute
+  '/services/courier': typeof ServicesCourierRoute
+  '/services/guarding': typeof ServicesGuardingRoute
+  '/services/home-security': typeof ServicesHomeSecurityRoute
+  '/services/k9': typeof ServicesK9Route
+  '/services/special': typeof ServicesSpecialRoute
+  '/services/technical': typeof ServicesTechnicalRoute
+  '/services/tracking': typeof ServicesTrackingRoute
+  '/services/workshop': typeof ServicesWorkshopRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +208,18 @@ export interface FileRouteTypes {
     | '/csr'
     | '/news'
     | '/services'
+    | '/services/alarm-response'
+    | '/services/cash-management'
+    | '/services/cctv'
+    | '/services/courier'
+    | '/services/guarding'
+    | '/services/home-security'
+    | '/services/k9'
+    | '/services/special'
+    | '/services/technical'
+    | '/services/tracking'
+    | '/services/workshop'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -110,6 +229,17 @@ export interface FileRouteTypes {
     | '/contacts'
     | '/csr'
     | '/news'
+    | '/services/alarm-response'
+    | '/services/cash-management'
+    | '/services/cctv'
+    | '/services/courier'
+    | '/services/guarding'
+    | '/services/home-security'
+    | '/services/k9'
+    | '/services/special'
+    | '/services/technical'
+    | '/services/tracking'
+    | '/services/workshop'
     | '/services'
   id:
     | '__root__'
@@ -121,6 +251,18 @@ export interface FileRouteTypes {
     | '/csr'
     | '/news'
     | '/services'
+    | '/services/alarm-response'
+    | '/services/cash-management'
+    | '/services/cctv'
+    | '/services/courier'
+    | '/services/guarding'
+    | '/services/home-security'
+    | '/services/k9'
+    | '/services/special'
+    | '/services/technical'
+    | '/services/tracking'
+    | '/services/workshop'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -131,7 +273,7 @@ export interface RootRouteChildren {
   ContactsRoute: typeof ContactsRoute
   CsrRoute: typeof CsrRoute
   NewsRoute: typeof NewsRoute
-  ServicesRoute: typeof ServicesRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -192,8 +334,126 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/workshop': {
+      id: '/services/workshop'
+      path: '/workshop'
+      fullPath: '/services/workshop'
+      preLoaderRoute: typeof ServicesWorkshopRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/tracking': {
+      id: '/services/tracking'
+      path: '/tracking'
+      fullPath: '/services/tracking'
+      preLoaderRoute: typeof ServicesTrackingRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/technical': {
+      id: '/services/technical'
+      path: '/technical'
+      fullPath: '/services/technical'
+      preLoaderRoute: typeof ServicesTechnicalRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/special': {
+      id: '/services/special'
+      path: '/special'
+      fullPath: '/services/special'
+      preLoaderRoute: typeof ServicesSpecialRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/k9': {
+      id: '/services/k9'
+      path: '/k9'
+      fullPath: '/services/k9'
+      preLoaderRoute: typeof ServicesK9RouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/home-security': {
+      id: '/services/home-security'
+      path: '/home-security'
+      fullPath: '/services/home-security'
+      preLoaderRoute: typeof ServicesHomeSecurityRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/guarding': {
+      id: '/services/guarding'
+      path: '/guarding'
+      fullPath: '/services/guarding'
+      preLoaderRoute: typeof ServicesGuardingRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/courier': {
+      id: '/services/courier'
+      path: '/courier'
+      fullPath: '/services/courier'
+      preLoaderRoute: typeof ServicesCourierRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/cctv': {
+      id: '/services/cctv'
+      path: '/cctv'
+      fullPath: '/services/cctv'
+      preLoaderRoute: typeof ServicesCctvRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/cash-management': {
+      id: '/services/cash-management'
+      path: '/cash-management'
+      fullPath: '/services/cash-management'
+      preLoaderRoute: typeof ServicesCashManagementRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/alarm-response': {
+      id: '/services/alarm-response'
+      path: '/alarm-response'
+      fullPath: '/services/alarm-response'
+      preLoaderRoute: typeof ServicesAlarmResponseRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
+
+interface ServicesRouteChildren {
+  ServicesAlarmResponseRoute: typeof ServicesAlarmResponseRoute
+  ServicesCashManagementRoute: typeof ServicesCashManagementRoute
+  ServicesCctvRoute: typeof ServicesCctvRoute
+  ServicesCourierRoute: typeof ServicesCourierRoute
+  ServicesGuardingRoute: typeof ServicesGuardingRoute
+  ServicesHomeSecurityRoute: typeof ServicesHomeSecurityRoute
+  ServicesK9Route: typeof ServicesK9Route
+  ServicesSpecialRoute: typeof ServicesSpecialRoute
+  ServicesTechnicalRoute: typeof ServicesTechnicalRoute
+  ServicesTrackingRoute: typeof ServicesTrackingRoute
+  ServicesWorkshopRoute: typeof ServicesWorkshopRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesAlarmResponseRoute: ServicesAlarmResponseRoute,
+  ServicesCashManagementRoute: ServicesCashManagementRoute,
+  ServicesCctvRoute: ServicesCctvRoute,
+  ServicesCourierRoute: ServicesCourierRoute,
+  ServicesGuardingRoute: ServicesGuardingRoute,
+  ServicesHomeSecurityRoute: ServicesHomeSecurityRoute,
+  ServicesK9Route: ServicesK9Route,
+  ServicesSpecialRoute: ServicesSpecialRoute,
+  ServicesTechnicalRoute: ServicesTechnicalRoute,
+  ServicesTrackingRoute: ServicesTrackingRoute,
+  ServicesWorkshopRoute: ServicesWorkshopRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -203,7 +463,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactsRoute: ContactsRoute,
   CsrRoute: CsrRoute,
   NewsRoute: NewsRoute,
-  ServicesRoute: ServicesRoute,
+  ServicesRoute: ServicesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
