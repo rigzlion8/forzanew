@@ -7,7 +7,7 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
-import hero from "@/assets/hero.jpg";
+import { ThreeDHero } from "@/components/three-d-hero";
 import aboutCard from "@/assets/about-card.jpg";
 import servicesCard from "@/assets/services-card.jpg";
 import newsCard from "@/assets/news-card.jpg";
@@ -54,40 +54,30 @@ function Index() {
   return (
     <>
       {/* HERO */}
-      <section className="relative h-[78vh] min-h-[520px] w-full overflow-hidden">
-        <img
-          src={hero}
-          alt="Security officer in luxury lobby"
-          width={1920}
-          height={1080}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
-        <div className="absolute inset-0 flex items-center">
-          <div className="container-x text-white max-w-2xl">
-            <div className="h-[2px] w-16 bg-gold mb-6" />
-            <h1 className="font-display text-5xl md:text-6xl font-bold leading-tight">
-              Protect Your <span className="text-gold">Family</span>
-              <br />& Your Future
-            </h1>
-            <p className="mt-6 text-white/80 text-lg leading-relaxed">
-              Protect what matters most with our world-class security solutions — and give your
-              home, business and guests the assurance of true peace of mind across Kenya.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/services" className="btn-gold">
-                Our Services
-              </Link>
-              <Link
-                to="/contacts"
-                className="btn-gold-outline text-white hover:bg-gold hover:text-ink"
-              >
-                Get a Quote
-              </Link>
-            </div>
+      <ThreeDHero>
+        <div className="container-x text-white max-w-2xl">
+          <div className="h-[2px] w-16 bg-gold mb-6" />
+          <h1 className="font-display text-5xl md:text-6xl font-bold leading-tight">
+            Protect Your <span className="text-gold">Family</span>
+            <br />& Your Future
+          </h1>
+          <p className="mt-6 text-white/80 text-lg leading-relaxed">
+            Protect what matters most with our world-class security solutions — and give your home,
+            business and guests the assurance of true peace of mind across Kenya.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to="/services" className="btn-gold">
+              Our Services
+            </Link>
+            <Link
+              to="/contacts"
+              className="btn-gold-outline text-white hover:bg-gold hover:text-ink"
+            >
+              Get a Quote
+            </Link>
           </div>
         </div>
-      </section>
+      </ThreeDHero>
 
       {/* WELCOME */}
       <section className="bg-ink text-white">

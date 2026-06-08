@@ -12,6 +12,7 @@ import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, Menu } from "lucid
 
 import appCss from "../styles.css?url";
 import faviconSvg from "../../public/favicon.svg?url";
+import { PageLoader } from "@/components/page-loader";
 
 function NotFoundComponent() {
   return (
@@ -246,6 +247,7 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
+      <PageLoader />
       <div className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">
