@@ -153,19 +153,19 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="bg-ink text-white/70 text-xs">
-        <div className="container-x flex justify-end items-center gap-4 py-2">
+        <div className="container-x flex justify-end items-center gap-2 sm:gap-4 py-2">
           <a
             href="tel:+254737033727"
-            className="flex items-center gap-1.5 hover:text-gold transition-colors"
+            className="flex items-center gap-1.5 hover:text-gold transition-colors whitespace-nowrap"
           >
-            <Phone className="h-3 w-3" />
+            <Phone className="h-3 w-3 shrink-0" />
             +254 737 033 727
           </a>
           <a
             href="mailto:forzasec.ke@gmail.com"
-            className="flex items-center gap-1.5 hover:text-gold transition-colors"
+            className="hidden sm:flex items-center gap-1.5 hover:text-gold transition-colors"
           >
-            <Mail className="h-3 w-3" />
+            <Mail className="h-3 w-3 shrink-0" />
             forzasec.ke@gmail.com
           </a>
           <div className="flex items-center gap-2 ml-2">
