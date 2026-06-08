@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useRouterState } from "@tanstack/react-router";
+import { useRouter } from "@tanstack/react-router";
 
 const MIN_TRANSITION_MS = 1500;
 
@@ -11,9 +11,9 @@ export function PageLoader() {
   const [transitionVisible, setTransitionVisible] = useState(false);
   const [transitionFading, setTransitionFading] = useState(false);
 
-  const isLoading = useRouterState({ select: (s) => s.isLoading });
-  const [wasLoading, setWasLoading] = useState(false);
+  const router = useRouter();
   const transitionStartRef = useRef<number>(0);
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout>>();
 
   // Initial splash on page load / refresh
   useEffect(() => {
@@ -32,33 +32,35 @@ export function PageLoader() {
     };
   }, []);
 
-  // Page transition splash
+  // Show splash on every navigation
   useEffect(() => {
-    if (showSplash) return;
-
-    if (isLoading && !wasLoading) {
+    const unsubBefore = router.subscribe("onBeforeNavigate", () => {
+      if (showSplash) return;
+      clearTimeout(hideTimerRef.current);
       transitionStartRef.current = Date.now();
       setTransitionVisible(true);
       setTransitionFading(false);
-    }
+    });
 
-    if (!isLoading && wasLoading) {
+    const unsubAfter = router.subscribe("onResolved", () => {
+      if (showSplash) return;
       const elapsed = Date.now() - transitionStartRef.current;
       const remaining = Math.max(0, MIN_TRANSITION_MS - elapsed);
 
-      const t = setTimeout(() => {
+      hideTimerRef.current = setTimeout(() => {
         setTransitionFading(true);
         setTimeout(() => {
           setTransitionVisible(false);
           setTransitionFading(false);
         }, 600);
       }, remaining);
+    });
 
-      return () => clearTimeout(t);
-    }
-
-    setWasLoading(isLoading);
-  }, [isLoading, wasLoading, showSplash]);
+    return () => {
+      unsubBefore();
+      unsubAfter();
+    };
+  }, [router, showSplash]);
 
   if (!splashVisible && !transitionVisible) return null;
 
