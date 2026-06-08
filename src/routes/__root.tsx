@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, Menu } from "lucide-react";
 
 import appCss from "../styles.css?url";
+import faviconSvg from "../../public/favicon.svg?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -63,6 +64,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     links: [
+      { rel: "icon", type: "image/svg+xml", href: faviconSvg },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
