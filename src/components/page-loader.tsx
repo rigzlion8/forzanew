@@ -18,12 +18,12 @@ export function PageLoader() {
 
     const fadeTimer = setTimeout(() => {
       setSplashFading(true);
-    }, 3200);
+    }, 4200);
 
     const hideTimer = setTimeout(() => {
       setSplashVisible(false);
       setShowSplash(false);
-    }, 4000);
+    }, 5000);
 
     return () => {
       clearTimeout(fadeTimer);
@@ -64,9 +64,6 @@ export function PageLoader() {
       >
         Forza Security
       </h1>
-      <p className="mt-3 text-white/40 text-sm tracking-[0.3em] uppercase">
-        Premium Security Solutions for Kenya
-      </p>
       <div className="mt-10 relative flex items-center justify-center h-6">
         <span className="absolute inline-flex h-4 w-4 rounded-full bg-gold opacity-75 animate-ping" />
         <span className="relative inline-flex h-3 w-3 rounded-full bg-gold" />
