@@ -1,16 +1,50 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Phone, FileText, ShieldCheck, ChevronRight } from "lucide-react";
+import { Phone, FileText, ShieldCheck, ChevronRight, ExternalLink } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 import hero from "@/assets/hero.jpg";
 import aboutCard from "@/assets/about-card.jpg";
 import servicesCard from "@/assets/services-card.jpg";
 import newsCard from "@/assets/news-card.jpg";
 import alarm from "@/assets/alarm.jpg";
 
+const clients = [
+  { name: "Equity Bank", url: "https://equitygroupholdings.com", bg: "bg-red-900" },
+  { name: "KCB Group", url: "https://kcbgroup.com", bg: "bg-blue-900" },
+  { name: "Safaricom", url: "https://www.safaricom.co.ke", bg: "bg-emerald-900" },
+  { name: "Stanbic", url: "https://www.stanbicbank.co.ke", bg: "bg-sky-900" },
+  { name: "UNHCR", url: "https://www.unhcr.org", bg: "bg-indigo-900" },
+  { name: "Naivas", url: "https://www.naivas.co.ke", bg: "bg-orange-900" },
+  { name: "Carrefour", url: "https://www.carrefour.ke", bg: "bg-blue-950" },
+  { name: "Serena Hotels", url: "https://www.serenahotels.com", bg: "bg-amber-900" },
+  { name: "World Food Programme", url: "https://www.wfp.org", bg: "bg-sky-950" },
+  { name: "Bidco", url: "https://www.bidcoafrica.com", bg: "bg-red-950" },
+  { name: "EABL", url: "https://www.eabl.com", bg: "bg-stone-900" },
+  { name: "Liquid Telecom", url: "https://www.liquid.tech", bg: "bg-cyan-900" },
+  { name: "Save the Children", url: "https://www.savethechildren.net", bg: "bg-rose-900" },
+  { name: "Fairmont", url: "https://www.fairmont.com", bg: "bg-slate-900" },
+  { name: "Airtel", url: "https://www.airtel.co.ke", bg: "bg-red-800" },
+  { name: "Sarova", url: "https://www.sarovahotels.com", bg: "bg-yellow-900" },
+  { name: "Co-operative Bank", url: "https://www.co-opbank.co.ke", bg: "bg-purple-900" },
+  { name: "Pathfinder International", url: "https://www.pathfinder.org", bg: "bg-teal-900" },
+  { name: "Telkom", url: "https://www.telkom.co.ke", bg: "bg-blue-900" },
+  { name: "Quickmart", url: "https://quickmart.co.ke", bg: "bg-lime-900" },
+];
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SGA Security — Premier Protection Services" },
-      { name: "description", content: "Protect what matters most. Premium guarding, alarm response and integrated security solutions across East Africa." },
+      { title: "Forza Security Premium Security Solutions for Kenya" },
+      {
+        name: "description",
+        content:
+          "Protect what matters most. Premium guarding, alarm response and integrated security solutions across Kenya.",
+      },
     ],
   }),
   component: Index,
@@ -21,20 +55,35 @@ function Index() {
     <>
       {/* HERO */}
       <section className="relative h-[78vh] min-h-[520px] w-full overflow-hidden">
-        <img src={hero} alt="Security officer in luxury lobby" width={1920} height={1080} className="absolute inset-0 h-full w-full object-cover" />
+        <img
+          src={hero}
+          alt="Security officer in luxury lobby"
+          width={1920}
+          height={1080}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
         <div className="absolute inset-0 flex items-center">
           <div className="container-x text-white max-w-2xl">
             <div className="h-[2px] w-16 bg-gold mb-6" />
             <h1 className="font-display text-5xl md:text-6xl font-bold leading-tight">
-              Protect Your <span className="text-gold">Family</span><br />& Your Future
+              Protect Your <span className="text-gold">Family</span>
+              <br />& Your Future
             </h1>
             <p className="mt-6 text-white/80 text-lg leading-relaxed">
-              Protect what matters most with our world-class security solutions — and give your home, business and guests the assurance of true peace of mind.
+              Protect what matters most with our world-class security solutions — and give your
+              home, business and guests the assurance of true peace of mind across Kenya.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/services" className="btn-gold">Our Services</Link>
-              <Link to="/contacts" className="btn-gold-outline text-white hover:bg-gold hover:text-ink">Get a Quote</Link>
+              <Link to="/services" className="btn-gold">
+                Our Services
+              </Link>
+              <Link
+                to="/contacts"
+                className="btn-gold-outline text-white hover:bg-gold hover:text-ink"
+              >
+                Get a Quote
+              </Link>
             </div>
           </div>
         </div>
@@ -43,12 +92,17 @@ function Index() {
       {/* WELCOME */}
       <section className="bg-ink text-white">
         <div className="container-x py-16 text-center max-w-3xl">
-          <h2 className="font-display text-3xl md:text-4xl">Welcome to <span className="text-gold">SGA Security</span></h2>
+          <h2 className="font-display text-3xl md:text-4xl">
+            Welcome to <span className="text-gold">Forza Security</span>
+          </h2>
           <div className="gold-divider" />
           <p className="text-white/70 leading-relaxed">
-            We are a multinational security solutions provider with over 55 years of operating experience and over 20,000 personnel across the region.
+            Premium Security Solutions for Kenya — protecting homes, businesses and institutions
+            with professionally trained personnel and cutting-edge technology.
           </p>
-          <Link to="/about" className="btn-gold-outline text-gold mt-8">Learn More</Link>
+          <Link to="/about" className="btn-gold-outline text-gold mt-8">
+            Learn More
+          </Link>
         </div>
       </section>
 
@@ -56,18 +110,45 @@ function Index() {
       <section className="container-x py-20">
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { img: aboutCard, title: "About SGA Security", to: "/about", text: "SGA Security is the region's leading security services provider with fixed base operations across East Africa servicing top tier clients." },
-            { img: servicesCard, title: "Our Services", to: "/services", text: "Our approach is to fully assess the risks inherent at each location and design an integrated solution tailored to your needs." },
-            { img: newsCard, title: "Latest News", to: "/news", text: "SGA Security recently welcomed industry partners to its headquarters for an interactive visit highlighting its role and future." },
-          ].map(c => (
+            {
+              img: aboutCard,
+              title: "About Forza Security",
+              to: "/about",
+              text: "Forza Security is Kenya's premium security solutions provider delivering tailored protection services backed by professional expertise and modern technology.",
+            },
+            {
+              img: servicesCard,
+              title: "Our Services",
+              to: "/services",
+              text: "Our approach is to fully assess the risks inherent at each location and design an integrated solution tailored to your needs.",
+            },
+            {
+              img: newsCard,
+              title: "Latest News",
+              to: "/news",
+              text: "Forza Security continues to set the standard for premium security solutions across Kenya.",
+            },
+          ].map((c) => (
             <article key={c.title} className="group">
               <div className="relative overflow-hidden">
-                <img src={c.img} alt={c.title} width={800} height={600} loading="lazy" className="aspect-[4/3] w-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <Link to={c.to} className="absolute bottom-0 left-6 right-6 bg-gold text-ink py-3 text-center font-semibold uppercase tracking-wider text-sm translate-y-0 group-hover:bg-ink group-hover:text-gold transition-colors">
+                <img
+                  src={c.img}
+                  alt={c.title}
+                  width={800}
+                  height={600}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <Link
+                  to={c.to}
+                  className="absolute bottom-0 left-6 right-6 bg-gold text-ink py-3 text-center font-semibold uppercase tracking-wider text-sm translate-y-0 group-hover:bg-ink group-hover:text-gold transition-colors"
+                >
                   {c.title}
                 </Link>
               </div>
-              <p className="mt-6 text-sm text-muted-foreground leading-relaxed text-center px-2">{c.text}</p>
+              <p className="mt-6 text-sm text-muted-foreground leading-relaxed text-center px-2">
+                {c.text}
+              </p>
             </article>
           ))}
         </div>
@@ -82,9 +163,16 @@ function Index() {
         <div className="container-x">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
             {[
-              ["Kenya", "Headquarters"], ["Uganda", "Regional Hub"], ["Tanzania", "Coastal Ops"], ["Rwanda", "Field Office"], ["Burundi", "Field Office"],
+              ["Nairobi", "Headquarters"],
+              ["Mombasa", "Coastal Hub"],
+              ["Kisumu", "Western Hub"],
+              ["Nakuru", "Rift Valley"],
+              ["Eldoret", "North Rift"],
             ].map(([c, s]) => (
-              <div key={c} className="bg-background border border-border p-6 hover:border-gold transition-colors">
+              <div
+                key={c}
+                className="bg-background border border-border p-6 hover:border-gold transition-colors"
+              >
                 <div className="text-2xl font-display text-ink">{c}</div>
                 <div className="text-xs uppercase tracking-widest text-gold mt-1">{s}</div>
               </div>
@@ -101,16 +189,35 @@ function Index() {
         </div>
         <div className="grid md:grid-cols-3 gap-10">
           {[
-            { Icon: Phone, num: "1.", title: "Let Us Call You", text: "Send us a request and we'll call you and help you assess your security needs." },
-            { Icon: FileText, num: "2.", title: "Free Survey & Quote", text: "Receive a free security quotation at your location from one of our security experts." },
-            { Icon: ShieldCheck, num: "3.", title: "Installation", text: "Our professional installation team will set up your world-class security solution in minutes." },
+            {
+              Icon: Phone,
+              num: "1.",
+              title: "Let Us Call You",
+              text: "Send us a request and we'll call you and help you assess your security needs.",
+            },
+            {
+              Icon: FileText,
+              num: "2.",
+              title: "Free Survey & Quote",
+              text: "Receive a free security quotation at your location from one of our security experts.",
+            },
+            {
+              Icon: ShieldCheck,
+              num: "3.",
+              title: "Installation",
+              text: "Our professional installation team will set up your world-class security solution in minutes.",
+            },
           ].map(({ Icon, num, title, text }) => (
             <div key={title} className="text-center">
               <div className="mx-auto h-28 w-28 rounded-full bg-gold flex items-center justify-center mb-6">
                 <Icon className="h-12 w-12 text-ink" strokeWidth={1.5} />
               </div>
-              <h3 className="font-display text-xl"><span className="text-gold">{num}</span> {title}</h3>
-              <p className="text-sm text-muted-foreground mt-3 max-w-xs mx-auto leading-relaxed">{text}</p>
+              <h3 className="font-display text-xl">
+                <span className="text-gold">{num}</span> {title}
+              </h3>
+              <p className="text-sm text-muted-foreground mt-3 max-w-xs mx-auto leading-relaxed">
+                {text}
+              </p>
             </div>
           ))}
         </div>
@@ -118,15 +225,26 @@ function Index() {
 
       {/* ALARM RESPONSE */}
       <section className="relative py-24 text-white">
-        <img src={alarm} alt="Control room" width={1600} height={900} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <img
+          src={alarm}
+          alt="Control room"
+          width={1600}
+          height={900}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-ink/85" />
         <div className="relative container-x text-center max-w-3xl">
           <h2 className="font-display text-3xl md:text-4xl">Alarm Response Services</h2>
           <div className="gold-divider" />
           <p className="text-white/75 leading-relaxed">
-            Your security is our highest priority. Monitoring and armed response services are closely integrated, combining hi-tech solutions with dedicated manpower available 24/7. Our regional control rooms dispatch instantly when an activation signal is received.
+            Your security is our highest priority. Monitoring and armed response services are
+            closely integrated, combining advanced technology with dedicated manpower available 24/7
+            across Kenya.
           </p>
-          <Link to="/services" className="btn-gold mt-8">Learn More</Link>
+          <Link to="/services" className="btn-gold mt-8">
+            Learn More
+          </Link>
         </div>
       </section>
 
@@ -135,15 +253,38 @@ function Index() {
         <div className="text-center mb-12">
           <h2 className="font-display text-3xl md:text-4xl">Our Happy Clients</h2>
           <div className="gold-divider" />
-          <p className="text-muted-foreground max-w-xl mx-auto">We are proud to call you our client. Below is a small selection of the organizations who trust us.</p>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            We are proud to serve leading organizations across Kenya.
+          </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-          {["Mashru Ltd", "World Food", "Tuskys", "Mandela Auto", "Pathfinder", "Equity", "Safaricom", "KCB", "Nation", "UNHCR"].map(n => (
-            <div key={n} className="h-24 border border-border flex items-center justify-center text-ink/60 font-display hover:border-gold hover:text-gold transition-colors">
-              {n}
-            </div>
-          ))}
-        </div>
+        <Carousel opts={{ align: "start", loop: true }} className="max-w-5xl mx-auto">
+          <CarouselContent className="-ml-4">
+            {clients.map((c) => (
+              <CarouselItem key={c.name} className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`group flex flex-col items-center gap-3 border border-border p-6 hover:border-gold transition-colors`}
+                >
+                  <div
+                    className={`h-16 w-16 ${c.bg} flex items-center justify-center group-hover:ring-2 group-hover:ring-gold transition-all`}
+                  >
+                    <span className="text-white font-display font-bold text-xl">
+                      {c.name.charAt(0)}
+                    </span>
+                  </div>
+                  <span className="text-sm text-center text-ink/70 font-medium group-hover:text-gold transition-colors">
+                    {c.name}
+                  </span>
+                  <ExternalLink className="h-3 w-3 text-muted-foreground group-hover:text-gold transition-colors" />
+                </a>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex -left-4 border-gold text-gold hover:bg-gold hover:text-ink" />
+          <CarouselNext className="hidden md:flex -right-4 border-gold text-gold hover:bg-gold hover:text-ink" />
+        </Carousel>
       </section>
     </>
   );
