@@ -12,7 +12,6 @@ import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, Menu } from "lucid
 
 import appCss from "../styles.css?url";
 import faviconSvg from "../../public/favicon.svg?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -31,7 +30,7 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
   useEffect(() => {
-    reportLovableError(error, { boundary: "root" });
+    console.error(error);
   }, [error]);
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
