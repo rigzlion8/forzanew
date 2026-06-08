@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
 
-const SPLASH_KEY = "forza_splash_shown";
-
 export function PageLoader() {
   const [showSplash, setShowSplash] = useState(false);
   const [splashFading, setSplashFading] = useState(false);
@@ -13,28 +11,24 @@ export function PageLoader() {
   const isLoading = useRouterState({ select: (s) => s.isLoading });
   const [wasLoading, setWasLoading] = useState(false);
 
-  // Initial splash
+  // Show splash on every page load / refresh
   useEffect(() => {
-    const hasShown = sessionStorage.getItem(SPLASH_KEY);
-    if (!hasShown) {
-      setShowSplash(true);
-      setSplashVisible(true);
-      sessionStorage.setItem(SPLASH_KEY, "1");
+    setShowSplash(true);
+    setSplashVisible(true);
 
-      const fadeTimer = setTimeout(() => {
-        setSplashFading(true);
-      }, 3200);
+    const fadeTimer = setTimeout(() => {
+      setSplashFading(true);
+    }, 3200);
 
-      const hideTimer = setTimeout(() => {
-        setSplashVisible(false);
-        setShowSplash(false);
-      }, 4000);
+    const hideTimer = setTimeout(() => {
+      setSplashVisible(false);
+      setShowSplash(false);
+    }, 4000);
 
-      return () => {
-        clearTimeout(fadeTimer);
-        clearTimeout(hideTimer);
-      };
-    }
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(hideTimer);
+    };
   }, []);
 
   // Page transition loading
