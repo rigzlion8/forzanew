@@ -23,12 +23,12 @@ export function PageLoader() {
 
       const fadeTimer = setTimeout(() => {
         setSplashFading(true);
-      }, 2400);
+      }, 3200);
 
       const hideTimer = setTimeout(() => {
         setSplashVisible(false);
         setShowSplash(false);
-      }, 3000);
+      }, 4000);
 
       return () => {
         clearTimeout(fadeTimer);
