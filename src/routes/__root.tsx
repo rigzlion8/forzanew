@@ -12,13 +12,25 @@ import {
   Facebook,
   Instagram,
   Linkedin,
-  Twitter,
   Mail,
   Phone,
   Menu,
   ChevronDown,
   X,
 } from "lucide-react";
+
+const TikTok = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
+
+const WhatsApp = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
+    <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+  </svg>
+);
 
 import appCss from "../styles.css?url";
 import faviconSvg from "../../public/favicon.svg?url";
@@ -123,9 +135,7 @@ const NAV: NavItem[] = [
       { to: "/services/alarm-response", label: "Alarm Response" },
       { to: "/services/cctv", label: "CCTV Installation" },
       { to: "/services/tracking", label: "Fleet Tracking" },
-      { to: "/services/cash-management", label: "Cash in Transit" },
       { to: "/services/technical", label: "Technical Services" },
-      { to: "/services/courier", label: "Courier Services" },
       { to: "/services/k9", label: "K9 Security Dogs" },
       { to: "/services/special", label: "Special Services" },
       { to: "/services/home-security", label: "Home Security" },
@@ -175,11 +185,14 @@ function Header() {
             <a href="#" aria-label="Linkedin" className="hover:text-gold">
               <Linkedin className="h-3.5 w-3.5" />
             </a>
-            <a href="#" aria-label="Instagram" className="hover:text-gold">
+            <a href="https://www.instagram.com/forza.security/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-gold">
               <Instagram className="h-3.5 w-3.5" />
             </a>
-            <a href="#" aria-label="Twitter" className="hover:text-gold">
-              <Twitter className="h-3.5 w-3.5" />
+            <a href="https://www.tiktok.com/@forza.security" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="hover:text-gold">
+              <TikTok className="h-3.5 w-3.5" />
+            </a>
+            <a href="https://wa.me/message/XJYFEZP5QYEFB1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-gold">
+              <WhatsApp className="h-3.5 w-3.5" />
             </a>
           </div>
         </div>
@@ -354,15 +367,47 @@ function Footer() {
         <div>
           <h4 className="font-display text-gold text-lg mb-4">Find Us On Social Media</h4>
           <div className="flex gap-3">
-            {[Linkedin, Facebook, Instagram, Twitter].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="h-10 w-10 border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
+            <a
+              href="#"
+              aria-label="Linkedin"
+              className="h-10 w-10 border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="h-10 w-10 border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
+            >
+              <Facebook className="h-4 w-4" />
+            </a>
+            <a
+              href="https://www.instagram.com/forza.security/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="h-10 w-10 border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
+            >
+              <Instagram className="h-4 w-4" />
+            </a>
+            <a
+              href="https://www.tiktok.com/@forza.security"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok"
+              className="h-10 w-10 border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
+            >
+              <TikTok className="h-4 w-4" />
+            </a>
+            <a
+              href="https://wa.me/message/XJYFEZP5QYEFB1"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="h-10 w-10 border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
+            >
+              <WhatsApp className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </div>

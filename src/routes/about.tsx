@@ -39,8 +39,8 @@ function About() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { Icon: Award, k: "55+", v: "Years of experience" },
-              { Icon: Users, k: "20,000+", v: "Security personnel" },
+              { Icon: Award, k: "10+", v: "Years of experience" },
+              { Icon: Users, k: "2,000+", v: "Security personnel" },
               { Icon: Globe, k: "5", v: "Regional branches" },
               { Icon: Target, k: "24/7", v: "Control room coverage" },
             ].map(({ Icon, k, v }) => (

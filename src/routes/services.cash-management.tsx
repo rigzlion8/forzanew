@@ -46,7 +46,6 @@ function CashManagement() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               {[
                 "Armoured CIT Transport with Crew & Armed Escort",
-                "Cash Air Operations",
                 "Cash Handling and Sorting",
                 "ATM Stuffing and Maintenance",
                 "Point of Sale Cash Solutions",

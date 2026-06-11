@@ -46,7 +46,6 @@ function Special() {
                 "VIP Close Protection and Escort Services",
                 "Security Audit and Consultancy",
                 "Risk Management",
-                "Airport Transfers",
                 "Security, Crime Mapping & Intelligence Gathering",
                 "Investigations",
                 "Health and Safety including Environment Training (HS&E)",

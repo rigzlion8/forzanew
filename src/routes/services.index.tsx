@@ -3,7 +3,6 @@ import { PageHero, Section } from "@/components/page-shell";
 import {
   Shield,
   Radio,
-  Truck,
   Camera,
   Lock,
   UserCheck,
@@ -11,7 +10,6 @@ import {
   Briefcase,
   Dog,
   Wrench,
-  Package,
   Satellite,
 } from "lucide-react";
 
@@ -39,12 +37,6 @@ const services = [
     to: "/services/technical",
   },
   {
-    Icon: Truck,
-    t: "Cash in Transit",
-    d: "Secure cash and valuables movement with armored vehicles and certified crews.",
-    to: "/services/cash-management",
-  },
-  {
     Icon: Satellite,
     t: "Tracking",
     d: "GPS fleet and asset tracking with real-time monitoring at our 24/7 control room.",
@@ -55,12 +47,6 @@ const services = [
     t: "K9 Security Dogs",
     d: "Trained patrol, narcotics and explosives detection dogs with expert handlers.",
     to: "/services/k9",
-  },
-  {
-    Icon: Package,
-    t: "Courier Services",
-    d: "National and international courier, high-value manned delivery and warehousing.",
-    to: "/services/courier",
   },
   {
     Icon: Building2,

@@ -44,7 +44,6 @@ function Courier() {
               {[
                 "National and International Courier",
                 "High-Value Manned Courier",
-                "Dedicated Air Courier",
                 "Secure and Bonded Warehousing",
                 "Contract Storage and Distribution",
                 "Messenger and Mailroom Services",
