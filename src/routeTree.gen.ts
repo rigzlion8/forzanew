@@ -25,9 +25,7 @@ import { Route as ServicesSpecialRouteImport } from './routes/services.special'
 import { Route as ServicesK9RouteImport } from './routes/services.k9'
 import { Route as ServicesHomeSecurityRouteImport } from './routes/services.home-security'
 import { Route as ServicesGuardingRouteImport } from './routes/services.guarding'
-import { Route as ServicesCourierRouteImport } from './routes/services.courier'
 import { Route as ServicesCctvRouteImport } from './routes/services.cctv'
-import { Route as ServicesCashManagementRouteImport } from './routes/services.cash-management'
 import { Route as ServicesAlarmResponseRouteImport } from './routes/services.alarm-response'
 
 const ServicesRoute = ServicesRouteImport.update({
@@ -110,19 +108,9 @@ const ServicesGuardingRoute = ServicesGuardingRouteImport.update({
   path: '/guarding',
   getParentRoute: () => ServicesRoute,
 } as any)
-const ServicesCourierRoute = ServicesCourierRouteImport.update({
-  id: '/courier',
-  path: '/courier',
-  getParentRoute: () => ServicesRoute,
-} as any)
 const ServicesCctvRoute = ServicesCctvRouteImport.update({
   id: '/cctv',
   path: '/cctv',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const ServicesCashManagementRoute = ServicesCashManagementRouteImport.update({
-  id: '/cash-management',
-  path: '/cash-management',
   getParentRoute: () => ServicesRoute,
 } as any)
 const ServicesAlarmResponseRoute = ServicesAlarmResponseRouteImport.update({
@@ -141,9 +129,7 @@ export interface FileRoutesByFullPath {
   '/news': typeof NewsRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/alarm-response': typeof ServicesAlarmResponseRoute
-  '/services/cash-management': typeof ServicesCashManagementRoute
   '/services/cctv': typeof ServicesCctvRoute
-  '/services/courier': typeof ServicesCourierRoute
   '/services/guarding': typeof ServicesGuardingRoute
   '/services/home-security': typeof ServicesHomeSecurityRoute
   '/services/k9': typeof ServicesK9Route
@@ -162,9 +148,7 @@ export interface FileRoutesByTo {
   '/csr': typeof CsrRoute
   '/news': typeof NewsRoute
   '/services/alarm-response': typeof ServicesAlarmResponseRoute
-  '/services/cash-management': typeof ServicesCashManagementRoute
   '/services/cctv': typeof ServicesCctvRoute
-  '/services/courier': typeof ServicesCourierRoute
   '/services/guarding': typeof ServicesGuardingRoute
   '/services/home-security': typeof ServicesHomeSecurityRoute
   '/services/k9': typeof ServicesK9Route
@@ -185,9 +169,7 @@ export interface FileRoutesById {
   '/news': typeof NewsRoute
   '/services': typeof ServicesRouteWithChildren
   '/services/alarm-response': typeof ServicesAlarmResponseRoute
-  '/services/cash-management': typeof ServicesCashManagementRoute
   '/services/cctv': typeof ServicesCctvRoute
-  '/services/courier': typeof ServicesCourierRoute
   '/services/guarding': typeof ServicesGuardingRoute
   '/services/home-security': typeof ServicesHomeSecurityRoute
   '/services/k9': typeof ServicesK9Route
@@ -209,9 +191,7 @@ export interface FileRouteTypes {
     | '/news'
     | '/services'
     | '/services/alarm-response'
-    | '/services/cash-management'
     | '/services/cctv'
-    | '/services/courier'
     | '/services/guarding'
     | '/services/home-security'
     | '/services/k9'
@@ -230,9 +210,7 @@ export interface FileRouteTypes {
     | '/csr'
     | '/news'
     | '/services/alarm-response'
-    | '/services/cash-management'
     | '/services/cctv'
-    | '/services/courier'
     | '/services/guarding'
     | '/services/home-security'
     | '/services/k9'
@@ -252,9 +230,7 @@ export interface FileRouteTypes {
     | '/news'
     | '/services'
     | '/services/alarm-response'
-    | '/services/cash-management'
     | '/services/cctv'
-    | '/services/courier'
     | '/services/guarding'
     | '/services/home-security'
     | '/services/k9'
@@ -390,25 +366,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesGuardingRouteImport
       parentRoute: typeof ServicesRoute
     }
-    '/services/courier': {
-      id: '/services/courier'
-      path: '/courier'
-      fullPath: '/services/courier'
-      preLoaderRoute: typeof ServicesCourierRouteImport
-      parentRoute: typeof ServicesRoute
-    }
     '/services/cctv': {
       id: '/services/cctv'
       path: '/cctv'
       fullPath: '/services/cctv'
       preLoaderRoute: typeof ServicesCctvRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/services/cash-management': {
-      id: '/services/cash-management'
-      path: '/cash-management'
-      fullPath: '/services/cash-management'
-      preLoaderRoute: typeof ServicesCashManagementRouteImport
       parentRoute: typeof ServicesRoute
     }
     '/services/alarm-response': {
@@ -423,9 +385,7 @@ declare module '@tanstack/react-router' {
 
 interface ServicesRouteChildren {
   ServicesAlarmResponseRoute: typeof ServicesAlarmResponseRoute
-  ServicesCashManagementRoute: typeof ServicesCashManagementRoute
   ServicesCctvRoute: typeof ServicesCctvRoute
-  ServicesCourierRoute: typeof ServicesCourierRoute
   ServicesGuardingRoute: typeof ServicesGuardingRoute
   ServicesHomeSecurityRoute: typeof ServicesHomeSecurityRoute
   ServicesK9Route: typeof ServicesK9Route
@@ -438,9 +398,7 @@ interface ServicesRouteChildren {
 
 const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesAlarmResponseRoute: ServicesAlarmResponseRoute,
-  ServicesCashManagementRoute: ServicesCashManagementRoute,
   ServicesCctvRoute: ServicesCctvRoute,
-  ServicesCourierRoute: ServicesCourierRoute,
   ServicesGuardingRoute: ServicesGuardingRoute,
   ServicesHomeSecurityRoute: ServicesHomeSecurityRoute,
   ServicesK9Route: ServicesK9Route,

@@ -9,9 +9,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode, useState } from "react";
 import {
-  Facebook,
   Instagram,
-  Linkedin,
   Mail,
   Phone,
   Menu,
@@ -33,7 +31,7 @@ const WhatsApp = ({ className }: { className?: string }) => (
 );
 
 import appCss from "../styles.css?url";
-import faviconSvg from "../../public/favicon.svg?url";
+import logoImg from "../assets/forzasec.jpg?url";
 import { PageLoader } from "@/components/page-loader";
 
 function NotFoundComponent() {
@@ -86,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     links: [
-      { rel: "icon", type: "image/svg+xml", href: faviconSvg },
+      { rel: "icon", type: "image/jpeg", href: logoImg },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
@@ -179,33 +177,21 @@ function Header() {
             forzasec.ke@gmail.com
           </a>
           <div className="flex items-center gap-2 ml-2">
-            <a href="#" aria-label="Facebook" className="hover:text-gold">
-              <Facebook className="h-3.5 w-3.5" />
-            </a>
-            <a href="#" aria-label="Linkedin" className="hover:text-gold">
-              <Linkedin className="h-3.5 w-3.5" />
-            </a>
-            <a href="https://www.instagram.com/forza.security/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-gold">
-              <Instagram className="h-3.5 w-3.5" />
-            </a>
-            <a href="https://www.tiktok.com/@forza.security" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="hover:text-gold">
-              <TikTok className="h-3.5 w-3.5" />
-            </a>
             <a href="https://wa.me/message/XJYFEZP5QYEFB1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="hover:text-gold">
               <WhatsApp className="h-3.5 w-3.5" />
+            </a>
+            <a href="https://www.instagram.com/forza.security?utm_source=qr&igsh=MWU5YWxmbGtuOGczcw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-gold">
+              <Instagram className="h-3.5 w-3.5" />
+            </a>
+            <a href="https://www.tiktok.com/@forza.security?_r=1&_d=f06i3ijaa1k94h&sec_uid=MS4wLjABAAAA-fqA9xKAIsGOljEufyLjoTHC1abpn-lT3iY_hmRd3SiW1pH8JYCZCtlkbXSzeaqO&share_author_id=7584761440897942584&sharer_language=en&source=h5_m&u_code=f129cgi83e7328&timestamp=1781180792&user_id=7584761440897942584&sec_user_id=MS4wLjABAAAA-fqA9xKAIsGOljEufyLjoTHC1abpn-lT3iY_hmRd3SiW1pH8JYCZCtlkbXSzeaqO&item_author_type=1&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7645069611390519041&share_link_id=a68cffe7-b36c-40fd-a69a-56e44db239ba&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb7360&social_share_type=5&enable_checksum=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="hover:text-gold">
+              <TikTok className="h-3.5 w-3.5" />
             </a>
           </div>
         </div>
       </div>
       <div className="container-x flex items-center justify-between py-5">
         <Link to="/" className="flex items-center gap-2">
-          <div className="h-10 w-10 bg-ink flex items-center justify-center border border-gold">
-            <span className="text-gold font-display font-bold text-lg">F</span>
-          </div>
-          <div className="leading-tight">
-            <div className="font-display text-xl font-bold text-ink">Forza</div>
-            <div className="text-[10px] tracking-[0.3em] text-gold uppercase">Security</div>
-          </div>
+          <img src={logoImg} alt="Forza Security" className="h-12 w-auto" />
         </Link>
         <nav className="hidden lg:flex items-center gap-7">
           {NAV.map((n) =>
@@ -368,21 +354,16 @@ function Footer() {
           <h4 className="font-display text-gold text-lg mb-4">Find Us On Social Media</h4>
           <div className="flex gap-3">
             <a
-              href="#"
-              aria-label="Linkedin"
+              href="https://wa.me/message/XJYFEZP5QYEFB1"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
               className="h-10 w-10 border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
             >
-              <Linkedin className="h-4 w-4" />
+              <WhatsApp className="h-4 w-4" />
             </a>
             <a
-              href="#"
-              aria-label="Facebook"
-              className="h-10 w-10 border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
-            >
-              <Facebook className="h-4 w-4" />
-            </a>
-            <a
-              href="https://www.instagram.com/forza.security/"
+              href="https://www.instagram.com/forza.security?utm_source=qr&igsh=MWU5YWxmbGtuOGczcw=="
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -391,22 +372,13 @@ function Footer() {
               <Instagram className="h-4 w-4" />
             </a>
             <a
-              href="https://www.tiktok.com/@forza.security"
+              href="https://www.tiktok.com/@forza.security?_r=1&_d=f06i3ijaa1k94h&sec_uid=MS4wLjABAAAA-fqA9xKAIsGOljEufyLjoTHC1abpn-lT3iY_hmRd3SiW1pH8JYCZCtlkbXSzeaqO&share_author_id=7584761440897942584&sharer_language=en&source=h5_m&u_code=f129cgi83e7328&timestamp=1781180792&user_id=7584761440897942584&sec_user_id=MS4wLjABAAAA-fqA9xKAIsGOljEufyLjoTHC1abpn-lT3iY_hmRd3SiW1pH8JYCZCtlkbXSzeaqO&item_author_type=1&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7645069611390519041&share_link_id=a68cffe7-b36c-40fd-a69a-56e44db239ba&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb7360&social_share_type=5&enable_checksum=1"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="TikTok"
               className="h-10 w-10 border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
             >
               <TikTok className="h-4 w-4" />
-            </a>
-            <a
-              href="https://wa.me/message/XJYFEZP5QYEFB1"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="h-10 w-10 border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-colors"
-            >
-              <WhatsApp className="h-4 w-4" />
             </a>
           </div>
         </div>

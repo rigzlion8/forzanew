@@ -7,7 +7,7 @@ import { S as Slot } from "../_libs/radix-ui__react-slot.mjs";
 import { c as cva } from "../_libs/class-variance-authority.mjs";
 import { A as Autoplay } from "../_libs/embla-carousel-autoplay.mjs";
 import { a as aboutCard, s as servicesCard, n as newsCard } from "./about-card-r6tzH3jJ.mjs";
-import { P as Phone, h as FileText, S as ShieldCheck, E as ExternalLink, i as ArrowLeft, j as ArrowRight } from "../_libs/lucide-react.mjs";
+import { P as Phone, g as FileText, S as ShieldCheck, E as ExternalLink, h as ArrowLeft, i as ArrowRight } from "../_libs/lucide-react.mjs";
 import "../_libs/tanstack__router-core.mjs";
 import "../_libs/tanstack__history.mjs";
 import "../_libs/cookie-es.mjs";
