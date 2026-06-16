@@ -9,9 +9,9 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { ThreeDHero } from "@/components/three-d-hero";
-import aboutCard from "@/assets/about-card.jpg";
-import servicesCard from "@/assets/services-card.jpg";
-import newsCard from "@/assets/news-card.jpg";
+import aboutCard from "@/assets/forzasec1.0.jpg";
+import servicesCard from "@/assets/forzasec1.1.jpg";
+import newsCard from "@/assets/forzasec1.2.jpg";
 import alarm from "@/assets/alarm.jpg";
 
 const clients = [

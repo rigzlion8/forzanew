@@ -1,6 +1,6 @@
 import { j as jsxRuntimeExports } from "../_libs/react.mjs";
 import { P as PageHero, S as Section } from "./page-shell-CVxFGxmk.mjs";
-import { G as GraduationCap, H as Heart, b as Leaf, c as HandHeart } from "../_libs/lucide-react.mjs";
+import { G as GraduationCap, H as Heart, L as Leaf, b as HandHeart } from "../_libs/lucide-react.mjs";
 function CSR() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(PageHero, { title: "Corporate Social Responsibility", subtitle: "Giving back to the communities that have given us so much." }),

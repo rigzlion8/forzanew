@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, Section } from "@/components/page-shell";
-import newsCard from "@/assets/news-card.jpg";
-import servicesCard from "@/assets/services-card.jpg";
-import aboutCard from "@/assets/about-card.jpg";
+import newsCard from "@/assets/forzasec1.2.jpg";
+import servicesCard from "@/assets/forzasec1.1.jpg";
+import aboutCard from "@/assets/forzasec1.0.jpg";
 
 export const Route = createFileRoute("/news")({
   head: () => ({

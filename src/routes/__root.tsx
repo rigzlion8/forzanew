@@ -31,7 +31,7 @@ const WhatsApp = ({ className }: { className?: string }) => (
 );
 
 import appCss from "../styles.css?url";
-import logoImg from "../assets/forzasec.jpg?url";
+import logoImg from "../assets/forzalogofinal.png?url";
 import { PageLoader } from "@/components/page-loader";
 
 function NotFoundComponent() {
@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     links: [
-      { rel: "icon", type: "image/jpeg", href: logoImg },
+      { rel: "icon", type: "image/png", href: logoImg },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },

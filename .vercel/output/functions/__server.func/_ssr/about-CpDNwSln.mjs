@@ -1,6 +1,6 @@
 import { j as jsxRuntimeExports } from "../_libs/react.mjs";
 import { P as PageHero, S as Section } from "./page-shell-CVxFGxmk.mjs";
-import { A as Award, U as Users, f as Globe, T as Target } from "../_libs/lucide-react.mjs";
+import { A as Award, U as Users, e as Globe, T as Target } from "../_libs/lucide-react.mjs";
 function About() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(PageHero, { title: "About Forza Security", subtitle: "Premium security solutions engineered for Kenya — trust, innovation and unwavering commitment to safety." }),

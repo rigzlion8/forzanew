@@ -1,6 +1,6 @@
 import { r as reactExports, j as jsxRuntimeExports } from "../_libs/react.mjs";
 import { P as PageHero, S as Section } from "./page-shell-CVxFGxmk.mjs";
-import { d as MapPin, P as Phone, M as Mail, e as Clock } from "../_libs/lucide-react.mjs";
+import { c as MapPin, P as Phone, M as Mail, d as Clock } from "../_libs/lucide-react.mjs";
 function Contacts() {
   const [sent, setSent] = reactExports.useState(false);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
