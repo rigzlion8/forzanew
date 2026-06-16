@@ -191,7 +191,7 @@ function Header() {
       </div>
       <div className="container-x flex items-center justify-between py-5">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logoImg} alt="Forza Security" className="h-14 w-auto -my-1" />
+          <img src={logoImg} alt="Forza Security" className="h-16 w-auto -my-2 drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]" />
         </Link>
         <nav className="hidden lg:flex items-center gap-7">
           {NAV.map((n) =>
