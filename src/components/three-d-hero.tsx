@@ -206,7 +206,7 @@ export function ThreeDHero({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative h-[78vh] min-h-[520px] w-full overflow-hidden bg-ink">
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
-      <div className="absolute inset-0 flex items-center">{children}</div>
+      <div className="absolute inset-0 z-10 flex items-center">{children}</div>
     </div>
   );
 }
