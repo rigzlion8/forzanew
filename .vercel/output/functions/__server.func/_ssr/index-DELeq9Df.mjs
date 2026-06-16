@@ -389,7 +389,7 @@ function ThreeDHero({ children }) {
   }, [handleMouse]);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative h-[78vh] min-h-[520px] w-full overflow-hidden bg-ink", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("canvas", { ref: canvasRef, className: "absolute inset-0 h-full w-full" }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 flex items-center pointer-events-none", children })
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 z-10 flex items-center", children })
   ] });
 }
 const alarm = "/assets/alarm-BhB2orjx.jpg";
